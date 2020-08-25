@@ -10,6 +10,10 @@ player-rank-item: 'player_head'
 
 # This section configures the inventory shown when players rank up.
 rank-up-inventory:
+  # this is the title of the inventory when ranking up to a rank
+  # it supports placeholders, denoted by {}
+  title: "&3&lRankup to {rank_name}"
+  
   # This is the shape of the inventory gui.
   # The keys/numbers correspond to the rows of the inventory. Keep those in ascending order, starting at 1 and ending at 6!
   # Each row has a list of elements. Keep those at exactly 9 items per row or they will be cropped/filled
@@ -54,6 +58,9 @@ rank-up-inventory:
    
 # This section configures the inventory when a player can choose between 2 and 5 different branches to follow.
 choose-branch-inventory:
+  # this is the title of the inventory when choosing which branch to rank up to next
+  title: "&4&lChoose your path!"
+  
   # You know the drill (or if you don't, follow the instructions for the 'rank-up-inventory' setting above)
   gui-2-branches:
     '1': ['1', '1', '1', '1', '1', '1', '1', '1', '1']
@@ -96,6 +103,24 @@ ranks-inventory:
   previous-branch-page-item: 'ghast_tear'
   # This item is a navigation button used to display the next ranks in a branch (if more than 36 in branch)
   next-branch-page-item: 'gold_nugget'
+  # this is the title of the inventory
+  # it supports placeholders, denoted by {}
+  title: "&3&lRanks&7 - &8{branch_name}"
+  # 
+  rank-info:
+    pages:
+      main:
+        title: "&e&l<&r&e&l&6 ✦ &r&e&l>&m= &e&l&m&r {center:85}{rank_display_name}{/center} &r&e&l&m &r&e&l&m =&e&l<&r&e&l&6 ✦ &r&e&l>"
+        # Empty lines ("") will be ignored. If you want an empty line in the description, use a single space (" ")
+        description:
+          - " "
+          - "{if:present:deducted-requirements}{pad-right:150:&r&f&l&m }&f&l>&m=&r&l&m &f&l&m &r&e&l Cost {/pad}{/if}"
+          - "{repeat-for-each:decutable-requirements:player-money-requirement}{/repeat}"
+      secondary: 
+        title: ""
+        description:
+          - ""
+          - ""
   
 # This section defines which items in the /ranks gui will have a glow enchantment effect
 apply-enchantment-glow-in-gui: 
@@ -105,3 +130,17 @@ apply-enchantment-glow-in-gui:
   current-rank: false
   # Apply glow to the ranks the player can still reach eventually
   upcomming-ranks: false
+  
+  
+rankup-gui-rank-info:
+  pages:
+    main:
+      title: ""
+      description:
+        - ""
+        - ""
+    secondary: 
+      title: ""
+      description:
+        - ""
+        - ""
